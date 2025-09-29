@@ -8,7 +8,7 @@ class Animal:
         self.name = name
         self.health = 100
         self.hidden = False
-        self.alive.append(self)
+        Animal.alive.append(self)
 
     def __repr__(self) -> str:
         return (
@@ -26,8 +26,10 @@ class Herbivore(Animal):
 class Carnivore(Animal):
     @staticmethod
     def bite(beast: Herbivore) -> None:
-        if not beast.hidden:
-            beast.health -= 50
+        if isinstance(beast, Herbivore):
+            if beast.health > 0:
+                if not beast.hidden:
+                    beast.health -= 50
         if beast.health <= 0:
             beast.health = 0
             Animal.alive.remove(beast)
