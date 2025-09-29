@@ -2,11 +2,11 @@ from __future__ import annotations
 
 
 class Animal:
-    alive = []
+    alive: list[Animal] = []
 
-    def __init__(self, name: str) -> None:
+    def __init__(self, name: str, health: int) -> None:
         self.name = name
-        self.health = 100
+        self.health = health
         self.hidden = False
         Animal.alive.append(self)
 
